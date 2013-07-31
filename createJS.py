@@ -1,28 +1,52 @@
-
 import sys
 
-
-# Learning about arguments:
-for arg in sys.argv:
-    print arg
-
+# Getting our javascript class name
+print sys.argv
+if (sys.argv is False):
+    print "Please provide className as first SHELL argument."
+    sys.exit()
 jsClassName = sys.argv[1]
-print "className:"
+
+
+print "Saving class File:"
 print jsClassName
 
 
+def getFileContents(pathToFile):
+    file = open(pathToFile, "r+")
+    justRead = file.read()
+    file.close()
+    return justRead
+
+
 def saveToFile(_string, newFilePath):
-    "Saves the string to a file."
     file = open(newFilePath, "w+")
     file.write(_string)
     file.close()
 
+# Generates a simple class stube
 
-if jsClassName:
-    pathToFile = jsClassName + ".js"
-    print pathToFile
-    saveToFile("//Sample Javascript Class:", pathToFile)
+# function within start and end strings
 
 
-# Learning about python regex:
-import re
+def generateJSFile(start, end, clasName):
+    classString = "\n\tvar " + clasName + " = function(){\n\t};\n"
+    return start + classString + end
+
+
+# Saving Class file:
+
+
+def saveClassFile(jsClassName):
+    if jsClassName:
+        pathToFile = jsClassName + ".js"
+        print "Saved to:"
+        print pathToFile
+        start = getFileContents("start.js")
+        end = getFileContents("end.js")
+        generatedString = generateJSFile(start, end, jsClassName)
+        saveToFile(generatedString, pathToFile)
+
+
+saveClassFile(jsClassName)
+

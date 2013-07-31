@@ -8,3 +8,15 @@
     Model = Streak.Model,
     Collection = Streak.Collection,
     BB = Streak.BentoBox;
+
+
+
+
+
+
+
+
+	var Controller = function(){
+	};
+
+})(Streak);

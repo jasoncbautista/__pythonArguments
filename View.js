@@ -8,3 +8,5 @@
     Model = Streak.Model,
     Collection = Streak.Collection,
     BB = Streak.BentoBox;
+	var View = function(){
+	};})(Streak);
